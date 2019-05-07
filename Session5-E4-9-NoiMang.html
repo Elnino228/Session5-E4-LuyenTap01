@@ -52,10 +52,15 @@
 
     function fJoinArray() {
         let result = '<hr/>' + 'Result: ' + '<br>';
-        for (let i = 0; i < arrB.length; i++) {
-            arrA.push(arrB[i]);
+        let arrC=[];
+        for (let i = 0; i < (arrA.length+arrB.length); i++) {
+            if (i<arrA.length) {
+                arrC.push(arrA[i]);
+            } else  {
+                arrC.push(arrB[i-arrB.length]);
+            }
         }
-        result += 'Array after join: Array C= [' + arrA + ']<br/>';
+        result += 'Array after join: Array C= [' + arrC + ']<br/>';
         document.getElementById('result').innerHTML = result;
     }
 
