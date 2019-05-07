@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>Enter size of array A:</p>
+<input type="text" id="txtSizeA">
+<button type="button" id="arrayA" onclick="fGenerator(this.id)">Generate Array A</button>
+<br>
+<p>Enter size of array B:</p>
+<input type="text" id="txtSizeB">
+<button type="button" id="arrayB" onclick="fGenerator(this.id)">Generate Array B</button>
+<button type="button" id="btnCheck" onclick="fJoinArray()">Join</button>
+<div id="displayA"></div>
+<div id="displayB"></div>
+<div id="result"></div>
+<script>
+    let arrA = [];
+    let arrB = [];
+    function fGenerator(ID) {
+        let eA = 'Array A:'+'<br>';
+        let eB = 'Array B:'+'<br>';
+        if (ID == 'arrayA') {
+            //đặt lại mảng bằng rỗng
+            arrA = [];
+            let sizeA = document.getElementById('txtSizeA').value;
+            for (let i = 0; i < sizeA; i++) {
+                //cách sinh số ngẫu nhiên từ -99 đến 99
+                arrA[i] = Math.round(Math.random() * 199 - 100, 0);
+                eA += 'Element ' + i + ' = ' + arrA[i] + '<br/>';
+            }
+            document.getElementById('displayA').innerHTML = eA;
+            sizeA = '';
+        } else {
+            //đặt lại mảng bằng rỗng
+            arrB = [];
+            let sizeB = document.getElementById('txtSizeB').value;
+            for (let i = 0; i < sizeB; i++) {
+                //cách sinh số ngẫu nhiên từ -99 đến 99
+                arrB[i] = Math.round(Math.random() * 199 - 100, 0);
+                eB += 'Element ' + i + ' = ' + arrB[i] + '<br/>';
+            }
+            document.getElementById('displayB').innerHTML = eB;
+            sizeB = '';
+        }
+    }
+
+    function fJoinArray() {
+        let result = '<hr/>' + 'Result: ' + '<br>';
+        for (let i = 0; i < arrB.length; i++) {
+            arrA.push(arrB[i]);
+        }
+        result += 'Array after join: Array C= [' + arrA + ']<br/>';
+        document.getElementById('result').innerHTML = result;
+    }
+
+
+</script>
+</body>
+</html>

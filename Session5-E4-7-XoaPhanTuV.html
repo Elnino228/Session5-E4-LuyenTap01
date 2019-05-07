@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>Enter size of array:</p>
+<input type="text" id="txtSize">
+<button type="button" id="btnGenerator" onclick="fGenerator()">Generate Array</button>
+<br>
+<p>Enter V:</p>
+<input type="text" id="txtV">
+<button type="button" id="btnCheck" onclick="fDeleteItem()">Delete item in array (if any)</button>
+<div id="display"></div>
+<div id="result"></div>
+<script>
+    let arr = [];
+
+    function fGenerator() {
+        arr = [];
+        let e = '<hr/>' + 'Your Array:' + '<br>';
+        let size = document.getElementById('txtSize').value;
+        for (let i = 0; i < size; i++) {
+            arr[i] = Math.round(Math.random() * 199 - 100, 0);
+            e += 'Element ' + i + ' = ' + arr[i] + '<br/>';
+        }
+        document.getElementById('display').innerHTML = e;
+        size = '';
+    }
+
+    function fDeleteItem() {
+        let result = '<hr/>' + 'Result: ' + '<br>';
+        let hasV = false;
+        let mes = ''
+        let V = document.getElementById('txtV').value;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == V) hasV = true;
+            if (i < arr.length - 1 && hasV) {
+                arr[i] = arr[i + 1];
+
+            } else if (i==arr.length-1 && hasV) {//truong hop V là phần tử cuối cùng thì không cần dịch
+                arr[i]=0;
+            }
+        }
+        if (hasV) {
+            //arr[arr.length - 1] = 0;
+            arr.length = arr.length - 1;
+            result += 'Array after delete V: [' + arr + ']<br/>';
+        } else {
+            mes = 'V is not in array';
+            result += mes + '<br/>';
+        }
+
+        //console.log(arr);
+        document.getElementById('result').innerHTML = result;
+    }
+
+
+</script>
+</body>
+</html>

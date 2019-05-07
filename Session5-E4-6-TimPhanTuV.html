@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>Enter size of array:</p>
+<input type="text" id="txtNumbers">
+<button type="button"  onclick="fGenerator()">Generate Array</button>
+<br>
+<p>Enter V:</p>
+<input type="text" id="txtV">
+<button type="button" id="btnCheck" onclick="fFindInArray()">Find in array</button>
+<div id="display"></div>
+<div id="result"></div>
+<script>
+    let arr = [];
+    function fGenerator() {
+        arr = [];
+        let e = '<hr/>' + 'Your Array:' + '<br>';
+        let size = document.getElementById('txtNumbers').value;
+        for (let i = 0; i < size; i++) {
+            arr[i] = Math.round(Math.random() * 199 - 100, 0);
+            e += 'Element ' + i + ' = ' + arr[i] + '<br/>';
+        }
+        document.getElementById('display').innerHTML = e;
+        size = '';
+    }
+    function fFindInArray() {
+        let result = '<hr/>' + 'Result: ' + '<br>';
+        let mes = 'V is not in array';
+        let V = document.getElementById('txtV').value;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == V) {
+                mes = 'V is in array';
+                break;
+            }
+        }
+        //console.log(arr);
+        result += mes + '<br/>';
+        document.getElementById('result').innerHTML = result;
+    }
+
+
+</script>
+</body>
+</html>

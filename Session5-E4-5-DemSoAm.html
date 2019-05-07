@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="txtValue" >
+<button type="button" id="btnAdd" value="Add" onclick="fAdd()">Add</button>
+<button type="button" id="btnCheck"  onclick="fCoutNegativeInt()">Cout numbers negative integer</button>
+<div id="display"></div>
+<div id="result"></div>
+<script>
+    let x=0;
+    let arr=[];
+    let e='<hr/>'+'Your Array:'+'<br>';
+    function fAdd() {
+        let elmInput=document.getElementById('txtValue');
+        arr[x]=elmInput.value;
+        e+='Element '+x+' = '+arr[x]+'<br/>';
+        document.getElementById('display').innerHTML=e;
+        x++;
+        elmInput.value='';
+    }
+    function fCoutNegativeInt() {
+        let result='<hr/>'+'Result: '+'<br>';
+        let numbers=0;
+        for (let i=0;i<arr.length;i++){
+            if (arr[i]<0) {
+                numbers++;
+            }
+        }
+        //console.log(arr);
+        result+='Numbers negative integer = '+numbers+'<br/>';
+        document.getElementById('result').innerHTML=result;
+    }
+
+
+</script>
+</body>
+</html>
